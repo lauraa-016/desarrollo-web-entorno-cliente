@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-02-JSTiposdeDatos - Fundamentos de JavaScript</title>
+    <!-- 
+        ====================================================
+        COMENTARIO HTML (FORMA 1 - COMENTARIO DE BLOQUE/LÍNEA HTML)
+        ====================================================
+        Archivo: 02-02-JSTiposdeDatos.htm
+        Descripción: Ejercicios de Fundamentos de JavaScript, Tipos de Datos y Alcance de Variables.
+        Asignatura: Desarrollo Web en Entorno Cliente / Programación Web
+    -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #1a5276;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        .question-block {
+            background-color: #f1f5f9;
+            border-left: 4px solid #3498db;
+            padding: 12px 18px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-block h3 {
+            margin-top: 0;
+            color: #1e3a8a;
+            font-size: 1.05em;
+        }
+        .answer {
+            background-color: #ffffff;
+            padding: 10px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        code, pre {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        pre {
+            padding: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1a5276;
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .out-box {
+            background-color: #e0f2fe;
+            border: 1px solid #7dd3fc;
+            color: #0369a1;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .alert-log {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 10px;
+            margin: 8px 0;
+            font-family: monospace;
+        }
+    </style>
+
+    <script>
+        /*
+            ====================================================
+            COMENTARIO JAVASCRIPT MULTILÍNEA (FORMA 2 - BLOQUE EN JS)
+            ====================================================
+            Este script ejecuta la lógica requerida por los ejercicios:
+            - Alertas de prueba
+            - Declaración de variables
+            - Evaluación de expresiones implícitas
+            - Conversiones explícitas (parseInt, parseFloat)
+            - Demostración de alcance (var vs let vs const)
+        */
+
+        // COMENTARIO JAVASCRIPT LÍNEA ÚNICA (FORMA 2 - LÍNEA EN JS)
+        // Ejecución de la función alert (Ejercicio 21):
+        alert("holamundo");
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>02-02-JSTiposdeDatos.htm</h1>
+        <p><strong>Comentarios en el archivo:</strong></p>
+        <ul>
+            <li><strong>Manera 1 (HTML):</strong> Utilizando <code>&lt;!-- Comentario HTML --&gt;</code> (ver código fuente).</li>
+            <li><strong>Manera 2 (JavaScript):</strong> Utilizando <code>// Comentario de una línea</code> y <code>/* Comentario multilínea */</code> dentro del bloque <code>&lt;script&gt;</code>.</li>
+        </ul>
+
+        <h2>Cuestionario y Ejercicios Prácticos</h2>
+
+        <!-- Pregunta 3 -->
+        <div class="question-block">
+            <h3>3. ¿Qué etiqueta se utiliza para insertar código JavaScript en HTML?</h3>
+            <div class="answer">
+                Se utiliza la etiqueta <code>&lt;script&gt;</code>. Puede colocarse dentro de la sección <code>&lt;head&gt;</code> o antes del cierre de <code>&lt;/body&gt;</code>.
+            </div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question-block">
+            <h3>4. ¿Qué ventajas tiene incrustar el código JavaScript en un archivo externo?</h3>
+            <div class="answer">
+                <ul>
+                    <li><strong>Reutilización de código:</strong> Varios documentos HTML pueden compartir el mismo archivo JavaScript.</li>
+                    <li><strong>Separación de conceptos:</strong> Separa el contenido/estructura (HTML) de la lógica de programación (JS).</li>
+                    <li><strong>Mantenibilidad:</strong> Es más fácil corregir errores o actualizar la lógica en un solo archivo centralizado.</li>
+                    <li><strong>Rendimiento y Caché:</strong> El navegador almacena el archivo <code>.js</code> en la memoria caché, reduciendo el tiempo de carga en páginas subsecuentes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="question-block">
+            <h3>5. ¿Qué extensión suelen tener los archivos que contienen código JavaScript?</h3>
+            <div class="answer">
+                Tienen la extensión <code>.js</code>.
+            </div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="question-block">
+            <h3>6. ¿Cómo se referencia un archivo .js en HTML?</h3>
+            <div class="answer">
+                Mediante el atributo <code>src</code> en la etiqueta <code>&lt;script&gt;</code>:<br>
+                <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code>
+            </div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="question-block">
+            <h3>7. ¿Qué debe hacer si el archivo JavaScript se encuentra en otro directorio?</h3>
+            <div class="answer">
+                Se debe indicar la ruta relativa o absoluta adecuada en el atributo <code>src</code>:
+                <ul>
+                    <li>Subdirectorio: <code>&lt;script src="js/script.js"&gt;&lt;/script&gt;</code></li>
+                    <li>Directorio superior: <code>&lt;script src="../js/script.js"&gt;&lt;/script&gt;</code></li>
+                    <li>Ruta absoluta o URL: <code>&lt;script src="https://ejemplo.com/js/script.js"&gt;&lt;/script&gt;</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="question-block">
+            <h3>8. ¿Qué etiqueta se usa para mostrar un mensaje si el navegador no soporta JavaScript?</h3>
+            <div class="answer">
+                Se utiliza la etiqueta <code>&lt;noscript&gt;</code>.<br>
+                Ejemplo: <code>&lt;noscript&gt;Este sitio requiere JavaScript para funcionar correctamente.&lt;/noscript&gt;</code>
+            </div>
+        </div>
+
+        <!-- Pregunta 9 -->
+        <div class="question-block">
+            <h3>9. ¿Qué diferencia hay al insertar JavaScript en XHTML?</h3>
+            <div class="answer">
+                En XHTML (al ser XML estricto), los caracteres como <code>&lt;</code> y <code>&amp;</code> pueden causar errores de sintaxis XML. Para evitarlo, el código embebido debe envolverse en una sección CDATA:
+                <pre>// &lt;![CDATA[
+   // Código JavaScript aquí...
+// ]]&gt;</pre>
+                O alternativamente, utilizar archivos externos <code>.js</code>.
+            </div>
+        </div>
+
+        <!-- Pregunta 10 -->
+        <div class="question-block">
+            <h3>10. ¿Qué es la ofuscación de código y por qué se utiliza?</h3>
+            <div class="answer">
+                La <strong>ofuscación de código</strong> consiste en transformar el código fuente JavaScript para hacerlo de muy difícil lectura y comprensión para los seres humanos (renombrando variables a caracteres confusos, eliminando espacios, cambiando estructuras), manteniendo la misma funcionalidad lógica.<br>
+                Se utiliza para proteger la propiedad intelectual, prevenir la ingeniería inversa no autorizada y reducir el tamaño del archivo (en conjunto con la minificación).
+            </div>
+        </div>
+
+        <!-- Pregunta 11 -->
+        <div class="question-block">
+            <h3>11. ¿Cómo se llama el lenguaje que se menciona en el texto?</h3>
+            <div class="answer">
+                El lenguaje es <strong>JavaScript</strong> (estandarizado como <strong>ECMAScript</strong>).
+            </div>
+        </div>
+
+        <!-- Pregunta 12 -->
+        <div class="question-block">
+            <h3>12. ¿Qué nombre le dio Microsoft a JavaScript?</h3>
+            <div class="answer">
+                Microsoft le dio el nombre de <strong>JScript</strong>.
+            </div>
+        </div>
+
+        <!-- Pregunta 13 -->
+        <div class="question-block">
+            <h3>13. ¿Por qué Microsoft usó el nombre JScript?</h3>
+            <div class="answer">
+                Debido a cuestiones de marcas registradas y derechos de autor. Sun Microsystems poseía la marca registrada "Java", y Netscape junto con Sun poseían los derechos de la marca "JavaScript". Para evitar litigios legales, Microsoft creó su propia implementación con el nombre JScript.
+            </div>
+        </div>
+
+        <!-- Pregunta 14 -->
+        <div class="question-block">
+            <h3>14. ¿Qué problema surgió con la versión de JScript de Microsoft?</h3>
+            <div class="answer">
+                Generó graves problemas de incompatibilidad entre navegadores (las "guerras de navegadores"). JScript incluía características propietarias que no funcionaban en Netscape Navigator (y viceversa), lo que obligaba a los desarrolladores a escribir diferentes versiones de código para cada navegador.
+            </div>
+        </div>
+
+        <!-- Pregunta 15 -->
+        <div class="question-block">
+            <h3>15. ¿Qué es el DOM y por qué fue diseñado?</h3>
+            <div class="answer">
+                El <strong>DOM (Document Object Model)</strong> es una API e interfaz de programación estándar que representa un documento HTML o XML como una estructura en árbol de objetos.<br>
+                Fue diseñado para permitir a los lenguajes de programación (como JavaScript) acceder, modificar, añadir o eliminar de forma dinámica el contenido, la estructura y los estilos de un documento web de manera uniforme entre distintos navegadores.
+            </div>
+        </div>
+
+        <!-- Pregunta 16 -->
+        <div class="question-block">
+            <h3>16. ¿Qué navegadores incorporaron el DOM desde su primera versión?</h3>
+            <div class="answer">
+                Internet Explorer 4.0 y Netscape Navigator 4.0 incorporaron versiones iniciales e incompletas (DOM Nivel 0 / DHTML). La estandarización oficial del W3C (DOM Nivel 1) comenzó a ser adoptada plenamente a partir de Internet Explorer 5.0, Netscape 6.0 y posteriormente Mozilla Firefox.
+            </div>
+        </div>
+
+        <!-- Pregunta 17 -->
+        <div class="question-block">
+            <h3>17. ¿Qué estándar regula el lenguaje JavaScript desde 1997?</h3>
+            <div class="answer">
+                El estándar <strong>ECMA-262</strong>, mantenido por la organización <strong>ECMA International</strong>.
+            </div>
+        </div>
+
+        <!-- Pregunta 18 -->
+        <div class="question-block">
+            <h3>18. ¿Qué documento detalla las especificaciones del estándar ECMA?</h3>
+            <div class="answer">
+                El documento formal es la <strong>Especificación del Lenguaje ECMAScript (ECMAScript Language Specification - ECMA-262)</strong>.
+            </div>
+        </div>
+
+        <!-- Pregunta 19 -->
+        <div class="question-block">
+            <h3>19. ¿Qué relación tiene JavaScript con Java?</h3>
+            <div class="answer">
+                Prácticamente <strong>ninguna relación técnica directa</strong>. Comparten una sintaxis similar basada en C y el término "Java" por razones puramente comerciales de marketing en 1995.
+                <ul>
+                    <li><strong>Java:</strong> Lenguaje de programación compilado, fuertemente tipado, basado en clases y ejecutado en la Máquina Virtual de Java (JVM).</li>
+                    <li><strong>JavaScript:</strong> Lenguaje de script interpretado/JIT, dinámico, de tipado débil, basado en prototipos y ejecutado principalmente en el navegador.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pregunta 20 -->
+        <div class="question-block">
+            <h3>20. ¿Quién desarrolló originalmente JavaScript y con qué nombre?</h3>
+            <div class="answer">
+                Fue desarrollado por <strong>Brendan Eich</strong> en Netscape en 1995. Inicialmente se llamó <strong>Mocha</strong>, luego pasó a llamarse <strong>LiveScript</strong>, y finalmente <strong>JavaScript</strong>.
+            </div>
+        </div>
+
+        <!-- Pregunta 21 -->
+        <div class="question-block">
+            <h3>21. Usa la función alert para enseñar el mensaje holamundo</h3>
+            <div class="answer">
+                <code>alert("holamundo");</code><br>
+                <em>(Se ejecuta automáticamente al cargar esta página).</em>
+            </div>
+        </div>
+
+        <!-- Pregunta 22 -->
+        <div class="question-block">
+            <h3>22. Declara varias variables en una sola línea</h3>
+            <div class="answer">
+                <code>var x = 10, y = "Hola", z = true;</code>
+            </div>
+        </div>
+
+        <!-- Pregunta 23 -->
+        <div class="question-block">
+            <h3>23. ¿Qué caracteres y nombres están prohibidos como nombre de variables?</h3>
+            <div class="answer">
+                <ul>
+                    <li><strong>Comenzar por un número:</strong> Ej. <code>123variable</code> (Ilegal).</li>
+                    <li><strong>Espacios y caracteres especiales:</strong> Ej. <code>mi variable</code>, <code>precio-total</code>, <code>año#</code>, <code>user%</code> (Ilegal). Solo se permiten letras, dígitos, <code>_</code> y <code>$</code>.</li>
+                    <li><strong>Palabras reservadas de JS:</strong> Ej. <code>var</code>, <code>let</code>, <code>const</code>, <code>function</code>, <code>if</code>, <code>else</code>, <code>return</code>, <code>class</code>, <code>typeof</code>, <code>null</code>, <code>true</code>, <code>false</code>, <code>break</code>, <code>for</code>, <code>while</code>, <code>import</code>, etc.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pregunta 24 -->
+        <div class="question-block">
+            <h3>24. Crea un ejemplo para cada tipo de datos (Tabla HTML5)</h3>
+            <div class="answer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo de Dato</th>
+                            <th>Ejemplo de Código</th>
+                            <th>Descripción / Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cadena (String)</strong></td>
+                            <td><code>var texto = "Hola JavaScript";</code></td>
+                            <td>Secuencia de caracteres delimitada por comillas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Número (Number)</strong></td>
+                            <td><code>var num = 42;</code> / <code>var decimal = 3.14;</code></td>
+                            <td>Valores numéricos enteros o decimales.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Boolean</strong></td>
+                            <td><code>var esValido = true;</code></td>
+                            <td>Valor lógico: <code>true</code> o <code>false</code>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Null</strong></td>
+                            <td><code>var vacio = null;</code></td>
+                            <td>Ausencia intencional de valor u objeto.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Object</strong></td>
+                            <td><code>var persona = { nombre: "Ana", edad: 25 };</code></td>
+                            <td>Colección de propiedades clave-valor.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Arrays</strong></td>
+                            <td><code>var frutas = ["Manzana", "Banana", "Uva"];</code></td>
+                            <td>Lista ordenada de elementos (subtipo de Object).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Function</strong></td>
+                            <td><code>function sumar(a, b) { return a + b; }</code></td>
+                            <td>Bloque de código ejecutable reutilizable.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pregunta 25 -->
+        <div class="question-block">
+            <h3>25. Usa la función typeof para mostrar el tipo de los códigos</h3>
+            <div class="answer">
+                <div id="typeof-output"></div>
+                <script>
+                    (function() {
+                        var str = "Hola";
+                        var num = 100;
+                        var bool = false;
+                        var nul = null;
+                        var obj = { a: 1 };
+                        var arr = [1, 2, 3];
+                        var fn = function() {};
+
+                        var out = "<ul>" +
+                            "<li>typeof 'Hola': <code>" + (typeof str) + "</code></li>" +
+                            "<li>typeof 100: <code>" + (typeof num) + "</code></li>" +
+                            "<li>typeof false: <code>" + (typeof bool) + "</code></li>" +
+                            "<li>typeof null: <code>" + (typeof nul) + "</code> (comportamiento histórico JS)</li>" +
+                            "<li>typeof {a:1}: <code>" + (typeof obj) + "</code></li>" +
+                            "<li>typeof [1,2,3]: <code>" + (typeof arr) + "</code></li>" +
+                            "<li>typeof function(){}: <code>" + (typeof fn) + "</code></li>" +
+                            "</ul>";
+                        document.getElementById('typeof-output').innerHTML = out;
+                    })();
+                </script>
+            </div>
+        </div>
+
+        <!-- Pregunta 26 -->
+        <div class="question-block">
+            <h3>26. Ejecuta estos datos y muéstralos en un documento htm</h3>
+            <div class="answer">
+                <p><strong>Operaciones ejecutadas dinámicamente en JavaScript:</strong></p>
+                <div id="ejercicio26-output"></div>
+                <script>
+                    (function() {
+                        var a = true;
+                        var b = "hola"; // Asumiendo b="hola" para evitar ReferenceError de variable no definida
+                        var c = 1;
+
+                        var res = "<ul>" +
+                            "<li><code>var a = true; var b = 'hola'; var c = 1;</code></li>" +
+                            "<li><code>4 + 4</code>: <strong>" + (4 + 4) + "</strong> (Suma de números)</li>" +
+                            "<li><code>&quot;4&quot; + 4</code>: <strong>" + ("4" + 4) + "</strong> (Concatenación texto + número)</li>" +
+                            "<li><code>a + c</code> (true + 1): <strong>" + (a + c) + "</strong> (true se convierte a 1)</li>" +
+                            "<li><code>b + c</code> ('hola' + 1): <strong>" + (b + c) + "</strong> (Concatenación)</li>" +
+                            "<li><code>2.9e3 + 1</code> (2900 + 1): <strong>" + (2.9e3 + 1) + "</strong> (Notación científica)</li>" +
+                            "<li><code>2.9e3 + b</code> (2900 + 'hola'): <strong>" + (2.9e3 + b) + "</strong> (Concatenación)</li>" +
+                            "<li><code>2.9e3 + a</code> (2900 + true): <strong>" + (2.9e3 + a) + "</strong> (2900 + 1)</li>" +
+                            "</ul>";
+                        document.getElementById('ejercicio26-output').innerHTML = res;
+                    })();
+                </script>
+            </div>
+        </div>
+
+        <!-- Pregunta 27 -->
+        <div class="question-block">
+            <h3>27. Usa la función parseFloat y parseInt para convertir explícitamente los valores</h3>
+            <div class="answer">
+                <p>Valores a convertir: <code>2.9e3</code>, <code>30.1e-3</code>, <code>0.000000004</code>, <code>0.6</code>, <code>3000000</code>, <code>301231000</code></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Valor Entrada</th>
+                            <th>parseInt()</th>
+                            <th>parseFloat()</th>
+                        </tr>
+                    </thead>
+                    <tbody id="conversions-tbody"></tbody>
+                </table>
+                <script>
+                    (function() {
+                        var valores = [
+                            { original: "2.9e3 (2900)", valStr: "2.9e3", valNum: 2.9e3 },
+                            { original: "30.1e-3 (0.0301)", valStr: "30.1e-3", valNum: 30.1e-3 },
+                            { original: "0.000000004 (4e-9)", valStr: "0.000000004", valNum: 0.000000004 },
+                            { original: "0.6", valStr: "0.6", valNum: 0.6 },
+                            { original: "3000000", valStr: "3000000", valNum: 3000000 },
+                            { original: "301231000", valStr: "301231000", valNum: 301231000 }
+                        ];
+
+                        var tbodyHtml = "";
+                        valores.forEach(function(v) {
+                            tbodyHtml += "<tr>" +
+                                "<td><code>" + v.original + "</code></td>" +
+                                "<td>parseInt('" + v.valStr + "'): <strong>" + parseInt(v.valStr) + "</strong><br>parseInt(" + v.valNum + "): <strong>" + parseInt(v.valNum) + "</strong></td>" +
+                                "<td>parseFloat('" + v.valStr + "'): <strong>" + parseFloat(v.valStr) + "</strong><br>parseFloat(" + v.valNum + "): <strong>" + parseFloat(v.valNum) + "</strong></td>" +
+                                "</tr>";
+                        });
+                        document.getElementById('conversions-tbody').innerHTML = tbodyHtml;
+                    })();
+                </script>
+            </div>
+        </div>
+
+        <!-- Pregunta 28 -->
+        <div class="question-block">
+            <h3>28. Usa la propiedad length para hallar el tamaño de las cadenas "123456"</h3>
+            <div class="answer">
+                <div id="length-output"></div>
+                <script>
+                    (function() {
+                        var cad = "123456";
+                        document.getElementById('length-output').innerHTML = "La longitud de la cadena <code>" + cad + "</code> es: <strong>" + cad.length + "</strong> caracteres.";
+                    })();
+                </script>
+            </div>
+        </div>
+
+        <!-- Pregunta 29 -->
+        <div class="question-block">
+            <h3>29. Declara varias variables con const e intenta cambiarlas y visualízalas con un alert, ¿qué pasa?</h3>
+            <div class="answer">
+                <p><strong>Explicación:</strong> Las variables declaradas con <code>const</code> son constantes de solo lectura y poseen ámbito de bloque. Al intentar reasignar su valor, el motor de JavaScript arroja un error no capturado de tipo <code>TypeError: Assignment to constant variable</code> y la ejecución del script se detiene inmediatamente.</p>
+                <div class="alert-log">
+                    <strong>Demostración con try...catch:</strong><br>
+                    <script>
+                        try {
+                            const c1 = 10;
+                            const c2 = "Constante original";
+                            document.write("Valor inicial de c1: " + c1 + "<br>");
+                            // Intento de reasignación
+                            c1 = 20; 
+                            alert("Esto no se mostrará debido al error: " + c1);
+                        } catch (err) {
+                            document.write("<span style='color:red;'><strong>Error detectado:</strong> " + err.message + "</span>");
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pregunta 30 -->
+        <div class="question-block">
+            <h3>30. Declara varias variables con var dentro de un bloque if al principio e intenta acceder a ellas dentro y fuera del bloque con un alert, ¿qué pasa?</h3>
+            <div class="answer">
+                <p><strong>Explicación:</strong> Las variables declaradas con <code>var</code> no tienen ámbito de bloque, sino ámbito de función (o global). Por tanto, son accesibles y visibles tanto <strong>dentro</strong> como <strong>fuera</strong> del bloque <code>if</code>.</p>
+                <div class="alert-log">
+                    <strong>Demostración:</strong><br>
+                    <script>
+                        if (true) {
+                            var varDentro1 = "Variable VAR 1";
+                            var varDentro2 = 999;
+                            document.write("Dentro del bloque if: varDentro1 = " + varDentro1 + ", varDentro2 = " + varDentro2 + "<br>");
+                        }
+                        document.write("Fuera del bloque if: varDentro1 = " + varDentro1 + ", varDentro2 = " + varDentro2 + " (¡Es accesible!)");
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pregunta 31 -->
+        <div class="question-block">
+            <h3>31. Realiza el mismo ejercicio anterior pero con let dentro de un bloque if. ¿Se pueden ver el contenido de las variables?</h3>
+            <div class="answer">
+                <p><strong>Explicación:</strong> Las variables declaradas con <code>let</code> tienen ámbito de bloque (<em>block scope</em>). Dentro del bloque <code>if</code> son perfectamente visibles, pero al intentar acceder a ellas <strong>fuera</strong> del bloque <code>if</code>, el navegador lanza un error <code>ReferenceError: [variable] is not defined</code> porque la variable deja de existir al salir del bloque.</p>
+                <div class="alert-log">
+                    <strong>Demostración:</strong><br>
+                    <script>
+                        if (true) {
+                            let letDentro1 = "Variable LET 1";
+                            let letDentro2 = 555;
+                            document.write("Dentro del bloque if: letDentro1 = " + letDentro1 + ", letDentro2 = " + letDentro2 + "<br>");
+                        }
+                        try {
+                            // Intento de acceso fuera del bloque
+                            document.write(letDentro1);
+                        } catch (err) {
+                            document.write("<span style='color:red;'><strong>Error fuera del bloque:</strong> " + err.message + " (NO es accesible fuera del bloque).</span>");
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
