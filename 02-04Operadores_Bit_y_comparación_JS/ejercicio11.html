@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 11 - Operadores bit a bit</title>
+</head>
+<body>
+    <h1>Resultados de los operadores bit a bit</h1>
+
+    <script>
+        let binario = "10010111";
+        let num255 = "11111111";
+
+        let decimal = parseInt(binario, 2);
+
+        document.write(
+            "El binario " + binario +
+            " es " + decimal + " en decimal.<br>"
+        );
+
+        let DesplazamientoAND = decimal & 255;
+        let DesplazamientoOR = decimal | 255;
+        let DesplazamientoXOR = decimal ^ decimal;
+        let DesplazamientoNOT = ~decimal;
+        let Desplazamientoizquierda = decimal << 1;
+        let Desplazamientoderecha = decimal >> 1;
+        let Desplazamientoderecha0 = decimal >>> 2;
+
+        document.write("AND: " + DesplazamientoAND + "<br>");
+        document.write("OR: " + DesplazamientoOR + "<br>");
+        document.write("XOR: " + DesplazamientoXOR + "<br>");
+        document.write("NOT: " + DesplazamientoNOT + "<br>");
+        document.write(
+            "Desplazamiento izquierda: " +
+            Desplazamientoizquierda + "<br>"
+        );
+        document.write(
+            "Desplazamiento derecha: " +
+            Desplazamientoderecha + "<br>"
+        );
+        document.write(
+            "Desplazamiento derecha sin signo: " +
+            Desplazamientoderecha0 + "<br>"
+        );
+    </script>
+</body>
+</html>

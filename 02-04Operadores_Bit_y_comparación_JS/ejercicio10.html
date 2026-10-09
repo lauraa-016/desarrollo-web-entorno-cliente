@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 10 - Operadores bit a bit</title>
+</head>
+<body>
+    <h1>Tabla de operadores bit a bit en JavaScript</h1>
+
+    <table border="1">
+        <tr>
+            <th>Operador</th>
+            <th>Nombre</th>
+            <th>Operando izquierdo</th>
+            <th>Operando derecho</th>
+            <th>Ejemplo</th>
+        </tr>
+        <tr>
+            <td>&amp;</td>
+            <td>AND bit a bit</td>
+            <td>00001000</td>
+            <td>00001100</td>
+            <td>00001000 &amp; 00001100 = 00001000</td>
+        </tr>
+        <tr>
+            <td>|</td>
+            <td>OR bit a bit</td>
+            <td>00001000</td>
+            <td>00001100</td>
+            <td>00001000 | 00001100 = 00001100</td>
+        </tr>
+        <tr>
+            <td>^</td>
+            <td>XOR bit a bit</td>
+            <td>00001000</td>
+            <td>00001100</td>
+            <td>00001000 ^ 00001100 = 00000100</td>
+        </tr>
+        <tr>
+            <td>~</td>
+            <td>NOT bit a bit</td>
+            <td>00001000</td>
+            <td>No necesita</td>
+            <td>~8 = -9</td>
+        </tr>
+        <tr>
+            <td>&lt;&lt;</td>
+            <td>Desplazamiento izquierda</td>
+            <td>00001000</td>
+            <td>2 posiciones</td>
+            <td>00001000 &lt;&lt; 2 = 00100000</td>
+        </tr>
+        <tr>
+            <td>&gt;&gt;</td>
+            <td>Desplazamiento derecha con signo</td>
+            <td>00011000</td>
+            <td>2 posiciones</td>
+            <td>00011000 &gt;&gt; 2 = 00000110</td>
+        </tr>
+        <tr>
+            <td>&gt;&gt;&gt;</td>
+            <td>Desplazamiento derecha sin signo</td>
+            <td>00011000</td>
+            <td>2 posiciones</td>
+            <td>00011000 &gt;&gt;&gt; 2 = 00000110</td>
+        </tr>
+    </table>
+</body>
+</html>

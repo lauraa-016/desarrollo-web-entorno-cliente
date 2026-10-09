@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 12 - Segundo parámetro binario</title>
+</head>
+<body>
+    <h1>Operadores bit a bit con un segundo parámetro</h1>
+
+    <script>
+        // Primer número en binario y conversión a decimal
+        let binario = "10010111";
+        let decimal = parseInt(binario, 2);
+
+        // Segundo número en binario y conversión a decimal
+        let segundoparametroBinario = "11111111";
+        let segundoparametro = parseInt(segundoparametroBinario, 2);
+
+        // Operaciones bit a bit
+        let DesplazamientoAND = decimal & segundoparametro;
+        let DesplazamientoOR = decimal | segundoparametro;
+        let DesplazamientoXOR = decimal ^ segundoparametro;
+        let DesplazamientoNOT = ~segundoparametro;
+        let Desplazamientoizquierda = segundoparametro << 1;
+        let Desplazamientoderecha = segundoparametro >> 1;
+        let Desplazamientoderecha0 = decimal >>> 2;
+
+        // Mostrar los resultados
+        document.write("Primer número: " + binario +
+            " = " + decimal + "<br>");
+
+        document.write("Segundo número: " +
+            segundoparametroBinario + " = " +
+            segundoparametro + "<br><br>");
+
+        document.write("AND: " + DesplazamientoAND + "<br>");
+        document.write("OR: " + DesplazamientoOR + "<br>");
+        document.write("XOR: " + DesplazamientoXOR + "<br>");
+        document.write("NOT: " + DesplazamientoNOT + "<br>");
+
+        document.write("Desplazamiento izquierda: " +
+            Desplazamientoizquierda + "<br>");
+
+        document.write("Desplazamiento derecha: " +
+            Desplazamientoderecha + "<br>");
+
+        document.write("Desplazamiento derecha sin signo: " +
+            Desplazamientoderecha0 + "<br>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7 - Operadores combinados</title>
+</head>
+<body>
+    <h1>Operadores booleanos con paréntesis</h1>
+
+    <script>
+        let edad = 20;
+        let tieneEntrada = true;
+        let esFestivo = false;
+
+        document.write(
+            "AND: " + ((edad >= 18) && tieneEntrada) + "<br>"
+        );
+
+        document.write(
+            "OR: " + (esFestivo || (edad >= 18)) + "<br>"
+        );
+
+        document.write(
+            "NOT: " + (!(edad < 18)) + "<br>"
+        );
+
+        document.write(
+            "Combinado: " +
+            ((edad >= 18 && tieneEntrada) || esFestivo) + "<br>"
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2 - Ejemplos de asignación</title>
+</head>
+<body>
+    <h1>Ejemplos de operadores de asignación</h1>
+
+    <script>
+        let x = 10;
+        document.write("Asignación: " + x + "<br>");
+
+        x = 10;
+        x += 5;
+        document.write("Suma: " + x + "<br>");
+
+        x = 10;
+        x -= 3;
+        document.write("Resta: " + x + "<br>");
+
+        x = 10;
+        x *= 2;
+        document.write("Multiplicación: " + x + "<br>");
+
+        x = 10;
+        x /= 2;
+        document.write("División: " + x + "<br>");
+
+        x = 10;
+        x %= 3;
+        document.write("Módulo: " + x + "<br>");
+
+        x = 8;
+        x <<= 1;
+        document.write("Desplazamiento izquierda: " + x + "<br>");
+
+        x = 8;
+        x >>= 1;
+        document.write("Desplazamiento derecha: " + x + "<br>");
+
+        x = 8;
+        x >>>= 1;
+        document.write("Desplazamiento sin signo: " + x + "<br>");
+
+        x = 6;
+        x &= 3;
+        document.write("AND bit a bit: " + x + "<br>");
+
+        x = 6;
+        x |= 3;
+        document.write("OR bit a bit: " + x + "<br>");
+
+        x = 6;
+        x ^= 3;
+        document.write("XOR bit a bit: " + x + "<br>");
+
+        x = 3;
+        x **= 2;
+        document.write("Potencia: " + x + "<br>");
+
+        x = true;
+        x &&= false;
+        document.write("AND lógico: " + x + "<br>");
+
+        x = false;
+        x ||= true;
+        document.write("OR lógico: " + x + "<br>");
+
+        let nulo = null;
+        nulo ??= 5;
+        document.write("Asignación nula: " + nulo + "<br>");
+
+        let a, b;
+        [a, b] = [10, 20];
+        document.write("Desestructuración: a = " + a + ", b = " + b);
+    </script>
+</body>
+</html>
