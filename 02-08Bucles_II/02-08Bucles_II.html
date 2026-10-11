@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Practica 02-08 DWEC Fundamentos de JS</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 2px;
+            vertical-align: top;
+        }
+
+        .figura td {
+            width: 40px;
+            height: 40px;
+            border: 0;
+            padding: 0;
+        }
+
+        .tabla-colores td {
+            width: 40px;
+            height: 40px;
+            border: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Practica 02-08</h1>
+        <h1>Nombre: </h1>
+    </header>
+
+    <h1>Ejemplos</h1>
+    <script>
+        for (var i = 0; i < 10; i++) {
+            document.write(i + "<br>");
+        }
+
+        var i = 0;
+        while (i < 0) {
+            document.write(i + "-2<br>");
+            i++;
+        }
+
+        var i = 0;
+        do {
+            document.write(i + "-3<br>");
+            i++;
+        } while (i < 0);
+    </script>
+
+    <h1>Ejercicios</h1>
+
+    <h2>Ejercicio 1</h2>
+    <p>Mostrar todos los elementos del array con for en una lista HTML de color verde.</p>
+    <script>
+        const arr1 = ["Malaga", "Sevilla", "Cordoba", "Huelva", "Cadiz", "Almeria", "Granada"];
+
+        document.write("<ol style='color: green;'>");
+        for (var i = 0; i < arr1.length; i++) {
+            document.write("<li>" + arr1[i] + "</li>");
+        }
+        document.write("</ol>");
+    </script>
+
+    <h2>Ejercicio 2</h2>
+    <p>Mostrar las ciudades con un degradado de verde y el texto cada vez más grande.</p>
+    <script>
+        document.write("<ol>");
+        for (var i = 0; i < arr1.length; i++) {
+            var verde = Math.round((i / (arr1.length - 1)) * 255).toString(16).padStart(2, "0");
+            var color = "#00" + verde + "00";
+            var tamano = 12 + (i * 4);
+
+            document.write(
+                "<li style='color: " + color + "; font-size: " + tamano + "px; font-weight: bold;'>" +
+                arr1[i] + "</li>"
+            );
+        }
+        document.write("</ol>");
+    </script>
+
+    <h2>Ejercicio 3</h2>
+    <p>Usar for in para mostrar todas las asignaturas y sus notas.</p>
+    <script>
+        var Mis_notas = {
+            mates: 9,
+            Lengua: 6,
+            Fisica: 5,
+            Quimica: 9,
+            fisica: 5,
+            ingles: 5
+        };
+
+        for (var asignatura in Mis_notas) {
+            document.write(asignatura + ": " + Mis_notas[asignatura] + "<br>");
+        }
+    </script>
+
+    <h2>Ejercicio 4</h2>
+    <p>Combinar los dos arrays en una tabla.</p>
+    <script>
+        const arrCiudades = ["Malaga", "Sevilla", "Cordoba", "Huelva", "Cadiz", "Almeria", "Granada"];
+        const arrBonita = ["bonita", "Guapa", "Bella", "Pintoresca", "Hermosa"];
+
+        document.write("<table><tr>");
+        for (var i = 0; i < arrCiudades.length; i++) {
+            document.write("<td>");
+            for (var j = 0; j < arrBonita.length; j++) {
+                document.write(arrCiudades[i] + "-" + arrBonita[j] + "<br>");
+            }
+            document.write("</td>");
+        }
+        document.write("</tr></table>");
+    </script>
+
+    <h2>Ejercicio 5</h2>
+    <p>Crear un botón para cada ciudad.</p>
+    <script>
+        const arrBotones = ["Malaga", "Sevilla", "Cordoba", "Huelva", "Cadiz", "Almeria", "Granada"];
+
+        for (var i = 0; i < arrBotones.length; i++) {
+            document.write(
+                "<input type='button' value='" + arrBotones[i] +
+                "' onclick=\"alert('La ciudad mas bonita es " + arrBotones[i] + "')\"><br>"
+            );
+        }
+    </script>
+
+    <h2>Ejercicio 6</h2>
+    <p>Escribir "hola que tal" diez veces, cada vez más pequeño.</p>
+    <script>
+        for (var i = 10; i >= 1; i--) {
+            document.write("<p style='font-size: " + (i * 4) + "px;'>hola que tal</p>");
+        }
+    </script>
+
+    <h2>Ejercicio 7</h2>
+    <p>Formulario para seleccionar tipos de música y contar cuántas opciones se han seleccionado. Se muestra la solución con for, while y do while.</p>
+
+    <form name="selectForm">
+        <label for="musicTypes">Elija algunos tipos de música, haga clic en el botón de abajo:</label>
+        <br><br>
+        <select id="musicTypes" name="musicTypes" multiple size="5">
+            <option value="jazz">Jazz</option>
+            <option value="blues">Blues</option>
+            <option value="newage">New Age</option>
+            <option value="classical">Classical</option>
+            <option value="opera">Opera</option>
+        </select>
+        <br><br>
+        <input id="btnFor" type="button" value="Contar con for">
+        <input id="btnWhile" type="button" value="Contar con while">
+        <input id="btnDoWhile" type="button" value="Contar con do while">
+    </form>
+
+    <p id="resultado7"></p>
+
+    <script>
+        function contarConFor(lista) {
+            var numeroSeleccionado = 0;
+            for (var i = 0; i < lista.options.length; i++) {
+                if (lista.options[i].selected) {
+                    numeroSeleccionado++;
+                }
+            }
+            return numeroSeleccionado;
+        }
+
+        function contarConWhile(lista) {
+            var numeroSeleccionado = 0;
+            var i = 0;
+            while (i < lista.options.length) {
+                if (lista.options[i].selected) {
+                    numeroSeleccionado++;
+                }
+                i++;
+            }
+            return numeroSeleccionado;
+        }
+
+        function contarConDoWhile(lista) {
+            var numeroSeleccionado = 0;
+            var i = 0;
+            if (lista.options.length > 0) {
+                do {
+                    if (lista.options[i].selected) {
+                        numeroSeleccionado++;
+                    }
+                    i++;
+                } while (i < lista.options.length);
+            }
+            return numeroSeleccionado;
+        }
+
+        var listaMusica = document.getElementById("musicTypes");
+
+        document.getElementById("btnFor").addEventListener("click", function () {
+            document.getElementById("resultado7").textContent =
+                "Número de opciones seleccionadas (for): " + contarConFor(listaMusica);
+        });
+
+        document.getElementById("btnWhile").addEventListener("click", function () {
+            document.getElementById("resultado7").textContent =
+                "Número de opciones seleccionadas (while): " + contarConWhile(listaMusica);
+        });
+
+        document.getElementById("btnDoWhile").addEventListener("click", function () {
+            document.getElementById("resultado7").textContent =
+                "Número de opciones seleccionadas (do while): " + contarConDoWhile(listaMusica);
+        });
+    </script>
+
+    <h2>Ejercicio 8</h2>
+    <p>Crear una tabla de 3 por 3 con fondo de colores azul, verde y rojo, como en la imagen.</p>
+    <script>
+        var colores8 = [
+            ["blue", "lime", "red"],
+            ["red", "blue", "lime"],
+            ["lime", "red", "blue"]
+        ];
+
+        document.write("<table class='tabla-colores'>");
+        for (var i = 0; i < colores8.length; i++) {
+            document.write("<tr>");
+            for (var j = 0; j < colores8[i].length; j++) {
+                document.write("<td style='background-color: " + colores8[i][j] + ";'></td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+
+    <h2>Ejercicio 9</h2>
+    <p>Modificar el array de colores para dibujar la figura de la imagen usando una tabla de 6 por 6. Colores: amarillo, magenta y cian.</p>
+    <script>
+        var colores9 = [
+            ["magenta", "magenta", "magenta", "magenta", "magenta", "magenta"],
+            ["yellow",  "yellow",  "magenta", "magenta", "yellow",  "yellow"],
+            ["yellow",  "yellow",  "magenta", "magenta", "yellow",  "yellow"],
+            ["magenta", "magenta", "cyan",    "cyan",    "magenta", "magenta"],
+            ["yellow",  "yellow",  "magenta", "magenta", "yellow",  "yellow"],
+            ["magenta", "magenta", "magenta", "magenta", "magenta", "magenta"]
+        ];
+
+        document.write("<table class='figura'>");
+        for (var i = 0; i < colores9.length; i++) {
+            document.write("<tr>");
+            for (var j = 0; j < colores9[i].length; j++) {
+                document.write("<td style='background-color: " + colores9[i][j] + ";'></td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+
+    <h2>Ejercicio 10</h2>
+    <p>Modificar el array anterior para dibujar la segunda figura de 6 por 6.</p>
+    <script>
+        var colores10 = [
+            ["yellow",  "yellow",  "magenta", "magenta", "yellow",  "yellow"],
+            ["yellow",  "yellow",  "magenta", "magenta", "yellow",  "yellow"],
+            ["magenta", "magenta", "magenta", "magenta", "magenta", "magenta"],
+            ["yellow",  "yellow",  "magenta", "magenta", "yellow",  "yellow"],
+            ["yellow",  "magenta", "magenta", "magenta", "magenta", "yellow"],
+            ["magenta", "yellow",  "yellow",  "yellow",  "yellow",  "magenta"]
+        ];
+
+        document.write("<table class='figura'>");
+        for (var i = 0; i < colores10.length; i++) {
+            document.write("<tr>");
+            for (var j = 0; j < colores10[i].length; j++) {
+                document.write("<td style='background-color: " + colores10[i][j] + ";'></td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+
+</body>
+</html>
