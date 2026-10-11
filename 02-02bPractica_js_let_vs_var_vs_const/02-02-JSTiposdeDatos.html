@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>02-02-JS Tipos de Datos</title>
+</head>
+<body>
+
+    <!-- Ejercicio 1: Comentarios HTML y JavaScript -->
+
+    <h1>Práctica 02-02b: JavaScript</h1>
+
+    <!-- Este es un comentario HTML -->
+
+    <script>
+        // Este es un comentario JavaScript de una línea
+
+        /*
+        Este es un comentario JavaScript
+        de varias líneas
+        */
+
+        // Ejercicio 2: Mostrar un mensaje con alert
+        alert("holamundo");
+
+        // Ejercicio 3: Declarar varias variables en una línea
+        var nombre = "Laura", edad = 20, nota = 8.5;
+    </script>
+
+    <!-- Ejercicio 4: Nombres de variables -->
+
+    <h2>Ejercicio 4. Nombres de variables</h2>
+
+    <p>No se pueden utilizar palabras reservadas,
+    espacios ni números al principio del nombre.</p>
+
+    <p>Ejemplos de nombres válidos: nombre, edad, _dato, $precio.</p>
+
+    <!-- Ejercicio 5: Tipos de datos -->
+
+    <h2>Ejercicio 5. Tipos de datos</h2>
+
+    <table border="1">
+        <tr>
+            <th>Tipo de dato</th>
+            <th>Ejemplo</th>
+        </tr>
+        <tr>
+            <td>Cadena</td>
+            <td id="cadena"></td>
+        </tr>
+        <tr>
+            <td>Número</td>
+            <td id="numero"></td>
+        </tr>
+        <tr>
+            <td>Boolean</td>
+            <td id="boolean"></td>
+        </tr>
+        <tr>
+            <td>Null</td>
+            <td id="null"></td>
+        </tr>
+        <tr>
+            <td>Object</td>
+            <td id="objeto"></td>
+        </tr>
+        <tr>
+            <td>Arrays</td>
+            <td id="array"></td>
+        </tr>
+        <tr>
+            <td>Function</td>
+            <td id="funcion"></td>
+        </tr>
+    </table>
+
+    <script>
+        var texto = "Hola";
+        var numero = 20;
+        var booleano = true;
+        var valorNulo = null;
+        var persona = {nombre: "Laura", edad: 20};
+        var numeros = [1, 2, 3];
+
+        function saludar() {
+            return "Hola";
+        }
+
+        document.getElementById("cadena").textContent = texto;
+        document.getElementById("numero").textContent = numero;
+        document.getElementById("boolean").textContent = booleano;
+        document.getElementById("null").textContent = valorNulo;
+        document.getElementById("objeto").textContent =
+            JSON.stringify(persona);
+        document.getElementById("array").textContent =
+            JSON.stringify(numeros);
+        document.getElementById("funcion").textContent =
+            saludar();
+    </script>
+
+    <!-- Ejercicio 6: Utilizar typeof -->
+
+    <h2>Ejercicio 6. Operador typeof</h2>
+
+    <p id="tipos"></p>
+
+    <script>
+       typeof "Hola";       // "string"
+        typeof 20;           // "number"
+        typeof true;         // "boolean"
+        typeof undefined;    // "undefined"
+        typeof {};           // "object"
+        typeof [];           // "object"
+        typeof function(){}; // "function"
+
+        document.getElementById("tipos").innerHTML =
+            typeof "Hola" + "<br>" +
+            typeof 20 + "<br>" +
+            typeof true + "<br>" +
+            typeof undefined + "<br>" +
+            typeof {} + "<br>" +
+            typeof [] + "<br>" +
+            typeof function(){};
+    </script>
+
+    <!-- Ejercicio 7: Ejecutar las expresiones -->
+
+    <h2>Ejercicio 7. Resultados de las expresiones</h2>
+
+    <table border="1">
+        <tr>
+            <th>Expresión</th>
+            <th>Resultado</th>
+        </tr>
+        <tr>
+            <td>4 + 4</td>
+            <td id="r1"></td>
+        </tr>
+        <tr>
+            <td>"4" + 4</td>
+            <td id="r2"></td>
+        </tr>
+        <tr>
+            <td>a + c</td>
+            <td id="r3"></td>
+        </tr>
+        <tr>
+            <td>b + c</td>
+            <td id="r4"></td>
+        </tr>
+        <tr>
+            <td>2.9e3 + 1</td>
+            <td id="r5"></td>
+        </tr>
+        <tr>
+            <td>2.9e3 + b</td>
+            <td id="r6"></td>
+        </tr>
+        <tr>
+            <td>2.9e3 + a</td>
+            <td id="r7"></td>
+        </tr>
+    </table>
+
+    <script>
+        var a = true;
+        var b = "hola";
+        var c = 1;
+
+        document.getElementById("r1").textContent = 4 + 4;
+        document.getElementById("r2").textContent = "4" + 4;
+        document.getElementById("r3").textContent = a + c;
+        document.getElementById("r4").textContent = b + c;
+        document.getElementById("r5").textContent = 2.9e3 + 1;
+        document.getElementById("r6").textContent = 2.9e3 + b;
+        document.getElementById("r7").textContent = 2.9e3 + a;
+    </script>
+
+    <!-- Ejercicio 8: parseFloat y parseInt -->
+
+    <h2>Ejercicio 8. Conversión de valores</h2>
+
+    <table border="1">
+        <tr>
+            <th>Valor</th>
+            <th>parseFloat()</th>
+            <th>parseInt()</th>
+        </tr>
+        <tr>
+            <td>2.9e3</td>
+            <td id="pf1"></td>
+            <td id="pi1"></td>
+        </tr>
+        <tr>
+            <td>30.1e-3</td>
+            <td id="pf2"></td>
+            <td id="pi2"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td id="pf3"></td>
+            <td id="pi3"></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td id="pf4"></td>
+            <td id="pi4"></td>
+        </tr>
+        <tr>
+            <td>3000000</td>
+            <td id="pf5"></td>
+            <td id="pi5"></td>
+        </tr>
+    </table>
+
+    <script>
+        var valores = ["2.9e3", "30.1e-3", "4", "6", "3000000"];
+
+        for (var i = 0; i < valores.length; i++) {
+            document.getElementById("pf" + (i + 1)).textContent =
+                parseFloat(valores[i]);
+
+            document.getElementById("pi" + (i + 1)).textContent =
+                parseInt(valores[i]);
+        }
+    </script>
+
+    <!-- Ejercicio 9: Propiedad length -->
+
+    <h2>Ejercicio 9. Longitud de una cadena</h2>
+
+    <p id="longitud"></p>
+
+    <script>
+        var cadena = "123456";
+
+        document.getElementById("longitud").textContent =
+            "La longitud de la cadena es: " + cadena.length;
+    </script>
+
+</body>
+</html>
