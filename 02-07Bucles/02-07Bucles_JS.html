@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Practica 02-07 DWEC Fundamentos de JS</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <header>
+        <h1>Practica 02-07</h1>
+    </header>
+
+    <h1>Ejemplos</h1>
+    <script>
+        for (var i = 0; i < 10; i++) {
+            document.write(i + "<br>");
+        }
+
+        var i = 0;
+        while (i < 0) {
+            document.write(i + "-2<br>");
+            i++;
+        }
+
+        var i = 0;
+        do {
+            document.write(i + "-3<br>");
+            i++;
+        } while (i < 0);
+    </script>
+
+    <h1>Ejercicios</h1>
+
+    <h2>1. Mostrar una palabra 10 veces con for</h2>
+    <script>
+        var palabra1 = prompt("Ejercicio 1: Escribe una palabra");
+        for (var i = 0; i < 10; i++) {
+            document.write(palabra1 + "<br>");
+        }
+    </script>
+
+    <h2>2. Mostrar los años cumplidos con while</h2>
+    <script>
+        var edad2 = parseInt(prompt("Ejercicio 2: ¿Qué edad tienes?"));
+        var i = 1;
+        while (i <= edad2) {
+            document.write(i + "<br>");
+            i++;
+        }
+    </script>
+
+    <h2>3. Números impares desde 1 hasta el número indicado</h2>
+    <script>
+        var numero3 = parseInt(prompt("Ejercicio 3: Introduce un número entero positivo"));
+        var texto3 = "";
+        for (var i = 1; i <= numero3; i += 2) {
+            if (texto3 !== "") {
+                texto3 += ", ";
+            }
+            texto3 += i;
+        }
+        document.write(texto3 + "<br>");
+    </script>
+
+    <h2>4. Cuenta atrás hasta cero</h2>
+    <script>
+        var numero4 = parseInt(prompt("Ejercicio 4: Introduce un número entero positivo"));
+        var texto4 = "";
+        for (var i = numero4; i >= 0; i--) {
+            if (texto4 !== "") {
+                texto4 += ", ";
+            }
+            texto4 += i;
+        }
+        document.write(texto4 + "<br>");
+    </script>
+
+    <h2>5. Capital obtenido en una inversión cada año</h2>
+    <script>
+        var cantidad5 = parseFloat(prompt("Ejercicio 5: Cantidad que quieres invertir"));
+        var interes5 = parseFloat(prompt("Ejercicio 5: Interés anual en porcentaje (por ejemplo, 2 para 2%)"));
+        var anos5 = parseInt(prompt("Ejercicio 5: Número de años"));
+        var capital5 = cantidad5;
+
+        for (var i = 1; i <= anos5; i++) {
+            capital5 = capital5 * (1 + interes5 / 100);
+            document.write("Año " + i + " - Capital obtenido: " + capital5.toFixed(2) + " €<br>");
+        }
+    </script>
+
+    <h2>6. Triángulo de asteriscos</h2>
+    <script>
+        var altura6 = parseInt(prompt("Ejercicio 6: Introduce la altura del triángulo"));
+        for (var i = 1; i <= altura6; i++) {
+            for (var j = 1; j <= i; j++) {
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+    </script>
+
+    <h2>7. Tablas de multiplicar del 1 al 10</h2>
+    <script>
+        for (var i = 1; i <= 10; i++) {
+            document.write("<h3>Tabla del " + i + "</h3>");
+            for (var j = 1; j <= 10; j++) {
+                document.write(i + " x " + j + " = " + (i * j) + "<br>");
+            }
+        }
+    </script>
+
+    <h2>8. Triángulo de números impares descendentes</h2>
+    <script>
+        var altura8 = parseInt(prompt("Ejercicio 8: Introduce la altura del triángulo"));
+        for (var i = 1; i <= altura8; i++) {
+            var texto8 = "";
+            for (var j = i; j >= 1; j--) {
+                texto8 += (2 * j - 1) + " ";
+            }
+            document.write(texto8 + "<br>");
+        }
+    </script>
+
+    <h2>9. Pedir la contraseña hasta acertar</h2>
+    <script>
+        var contrasena9 = "contraseña";
+        var intento9 = prompt("Ejercicio 9: Introduce la contraseña");
+        while (intento9 !== contrasena9) {
+            intento9 = prompt("Contraseña incorrecta. Inténtalo de nuevo");
+        }
+        document.write("Contraseña correcta.<br>");
+    </script>
+
+    <h2>10. Comprobar si un número es primo</h2>
+    <script>
+        var numero10 = parseInt(prompt("Ejercicio 10: Introduce un número entero"));
+        var primo10 = true;
+
+        if (numero10 < 2) {
+            primo10 = false;
+        } else {
+            for (var i = 2; i < numero10; i++) {
+                if (numero10 % i === 0) {
+                    primo10 = false;
+                }
+            }
+        }
+
+        if (primo10) {
+            document.write(numero10 + " es un número primo.<br>");
+        } else {
+            document.write(numero10 + " no es un número primo.<br>");
+        }
+    </script>
+
+    <h2>11. Mostrar una palabra al revés</h2>
+    <script>
+        var palabra11 = prompt("Ejercicio 11: Escribe una palabra");
+        for (var i = palabra11.length - 1; i >= 0; i--) {
+            document.write(palabra11[i] + "<br>");
+        }
+    </script>
+
+    <h2>12. Contar cuántas veces aparece una letra</h2>
+    <script>
+        var frase12 = prompt("Ejercicio 12: Escribe una frase");
+        var letra12 = prompt("Ejercicio 12: Escribe la letra que quieres buscar");
+        var contador12 = 0;
+
+        for (var i = 0; i < frase12.length; i++) {
+            if (frase12[i].toLowerCase() === letra12.toLowerCase()) {
+                contador12++;
+            }
+        }
+
+        document.write("La letra aparece " + contador12 + " veces.<br>");
+    </script>
+
+    <h2>13. Repetir lo que escriba el usuario hasta escribir salir</h2>
+    <script>
+        var texto13 = prompt("Ejercicio 13: Escribe algo (escribe salir para terminar)");
+        while (texto13 !== "salir") {
+            document.write(texto13 + "<br>");
+            texto13 = prompt("Escribe algo (escribe salir para terminar)");
+        }
+        document.write("Programa terminado.<br>");
+    </script>
+
+    <h2>14. Préstamo con interés compuesto y cuotas mensuales</h2>
+    <script>
+        var cantidad14 = parseFloat(prompt("Ejercicio 14: ¿Qué cantidad vas a pedir prestada?"));
+        var interes14 = parseFloat(prompt("Ejercicio 14: ¿Cuál es el interés anual en porcentaje? (Ejemplo: 2 para 2%)"));
+        var anos14 = parseInt(prompt("Ejercicio 14: ¿En cuántos años lo vas a devolver?"));
+
+        var total14 = cantidad14 * Math.pow(1 + interes14 / 100, anos14);
+        var totalMostrado14 = Math.floor(total14);
+        var cuotaMensual14 = Math.floor(total14 / (anos14 * 12));
+        var pagado14 = 0;
+
+        document.write("Total pedido: " + cantidad14.toFixed(0) + " €<br>");
+        document.write("Interés anual: " + (interes14 / 100).toFixed(4) + "<br>");
+        document.write("Años pedidos: " + anos14 + "<br>");
+        document.write("Total devuelto: " + totalMostrado14 + " €<br>");
+        document.write("Cuota mensual: " + cuotaMensual14 + " €<br><br>");
+
+        for (var i = 1; i <= anos14; i++) {
+            pagado14 = cuotaMensual14 * 12 * i;
+            var restante14 = totalMostrado14 - pagado14;
+
+            if (restante14 < 0) {
+                restante14 = 0;
+            }
+
+            document.write(
+                "Año " + i +
+                " - Pagado: " + pagado14 +
+                " € - Restante: " + restante14 + " €<br>"
+            );
+        }
+    </script>
+
+</body>
+</html>
