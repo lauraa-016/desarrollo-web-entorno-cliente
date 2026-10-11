@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <script>
+        var fechaNacimiento = prompt("Introduce tu año de nacimiento:");
+        var edad = new Date().getFullYear() - Number(fechaNacimiento);
+
+        if (edad < 18) {
+            document.write("Eres menor de edad.");
+        } else {
+            document.write("Estás en edad activa.");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 13</title>
+</head>
+<body>
+    <script>
+        var nombre1 = prompt("Introduce el primer nombre:").toLowerCase();
+        var nombre2 = prompt("Introduce el segundo nombre:").toLowerCase();
+
+        if (
+            nombre1.charAt(0) == nombre2.charAt(0) ||
+            nombre1.charAt(nombre1.length - 1) ==
+            nombre2.charAt(nombre2.length - 1)
+        ) {
+            document.write("coincidencia");
+        } else {
+            document.write("no hay coincidencia");
+        }
+    </script>
+</body>
+</html>

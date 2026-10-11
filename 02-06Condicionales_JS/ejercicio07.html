@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <script>
+        var direccion = window.location.href;
+        var inicio = direccion.substring(0, 4);
+
+        if (inicio == "http") {
+            document.write("Es una página remota.");
+        } else {
+            document.write("Es una página local.");
+        }
+    </script>
+</body>
+</html>

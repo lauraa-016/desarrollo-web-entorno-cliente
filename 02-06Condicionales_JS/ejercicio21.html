@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 21</title>
+</head>
+<body>
+    <script>
+        var nota = Number(prompt("Introduce una nota del 0 al 10:"));
+
+        if (nota < 0 || nota > 10) {
+            document.write("Nota no válida.");
+        } else if (nota < 5) {
+            document.write("Insuficiente");
+        } else if (nota < 7) {
+            document.write("Suficiente");
+        } else if (nota < 9) {
+            document.write("Notable");
+        } else {
+            document.write("Sobresaliente");
+        }
+    </script>
+</body>
+</html>
