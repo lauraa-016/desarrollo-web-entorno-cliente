@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Examen JavaScript - Laura de la Mata Mangas</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 980px;
+      margin: 30px auto;
+      padding: 0 18px;
+      background: #f5f7fa;
+      color: #17212b;
+      line-height: 1.55
+    }
+
+    h1 {
+      margin-bottom: 4px
+    }
+
+    header {
+      padding: 20px 24px;
+      background: #e7eef8;
+      border-radius: 12px
+    }
+
+    section {
+      background: white;
+      border: 1px solid #dbe2eb;
+      border-radius: 12px;
+      margin: 20px 0;
+      padding: 20px 24px
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #183c65
+    }
+
+    .resultado {
+      min-height: 45px;
+      border: 1px dashed #9baec3;
+      background: #f9fbfe;
+      border-radius: 8px;
+      padding: 12px;
+      overflow-x: auto
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 8px 0
+    }
+
+    td,
+    th {
+      border: 1px solid #a4b2c1;
+      padding: 7px 10px
+    }
+
+    progress {
+      max-width: 180px
+    }
+
+    img {
+      object-fit: cover
+    }
+
+    .nota {
+      color: #526276;
+      font-size: .95em
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Examen práctico de JavaScript</h1>
+    <p>Alumno/a: Laura de la Mata Mangas Grupo: 2ºDAW Fecha: 16/10/2026</p>
+    <p>Completa cada bloque &lt;script&gt; directamente, sin crear funciones. Los ejercicios se ejecutan al abrir la
+      página. Escribe el HTML de cada respuesta en su variable <code>salidaN</code>; la última línea ya lo muestra en
+      pantalla.</p>
+    <p class="nota">Importante: utiliza nombres de variables distintos en cada ejercicio (por ejemplo, numero1Ej1), ya
+      que todos los scripts comparten el mismo ámbito global.</p>
+  </header>
+  <section>
+    <h2>Ejercicio 1. Operaciones y validación (12 puntos)</h2>
+    <p>Solicita tres números enteros A, B y C mediante prompt(). Si A es mayor que 10, calcula (A + B) × C; en otro
+      caso, (B − C) × A. Si alguno no es entero, muestra un error.</p>
+    <div id="resultado1" class="resultado"></div>
+    <script>
+      let salida1 = "";
+
+      // COMPLETA AQUÍ EL EJERCICIO:
+      // 1. Solicita A, B y C con prompt().
+      const textoAEj1 = prompt("Ejercicio 1 - Introduce el número entero A:");
+      const textoBEj1 = prompt("Ejercicio 1 - Introduce el número entero B:");
+      const textoCEj1 = prompt("Ejercicio 1 - Introduce el número entero C:");
+
+      const numeroAEj1 = Number(textoAEj1);
+      const numeroBEj1 = Number(textoBEj1);
+      const numeroCEj1 = Number(textoCEj1);
+      let hayErrorEj1 = false;
+
+      // 2. Comprueba que son números enteros válidos.
+      if (textoAEj1 === null || !Number.isInteger(numeroAEj1)) {
+        salida1 += "<p>Error: el valor de A no es un número entero válido.</p>";
+        hayErrorEj1 = true;
+      }
+      if (textoBEj1 === null || !Number.isInteger(numeroBEj1)) {
+        salida1 += "<p>Error: el valor de B no es un número entero válido.</p>";
+        hayErrorEj1 = true;
+      }
+      if (textoCEj1 === null || !Number.isInteger(numeroCEj1)) {
+        salida1 += "<p>Error: el valor de C no es un número entero válido.</p>";
+        hayErrorEj1 = true;
+      }
+
+      // 3. Utiliza if / else para calcular el resultado.
+      if (!hayErrorEj1) {
+        let resultadoEj1;
+        if (numeroAEj1 > 10) {
+          resultadoEj1 = (numeroAEj1 + numeroBEj1) * numeroCEj1;
+          // 4. Añade el mensaje final a salida1.
+          salida1 += `<p>A = ${numeroAEj1} es mayor que 10, por tanto R = (A + B) × C = (${numeroAEj1} + ${numeroBEj1}) × ${numeroCEj1} = <strong>${resultadoEj1}</strong></p>`;
+        } else {
+          resultadoEj1 = (numeroBEj1 - numeroCEj1) * numeroAEj1;
+          salida1 += `<p>A = ${numeroAEj1} es menor o igual que 10, por tanto R = (B − C) × A = (${numeroBEj1} − ${numeroCEj1}) × ${numeroAEj1} = <strong>${resultadoEj1}</strong></p>`;
+        }
+      }
+
+      document.getElementById("resultado1").innerHTML = salida1;
+    </script>
+  </section>
+  <section>
+    <h2>Ejercicio 2. Tipos de datos (10 puntos)</h2>
+    <p>Crea ejemplos de number, string, boolean, undefined, null, bigint, symbol, Array, Object y Date. Genera una tabla
+      HTML con typeof y, cuando corresponda, instanceof. Explica el caso de null y cómo detectar un array.</p>
+    <div id="resultado2" class="resultado"></div>
+    <script>
+      let salida2 = "";
+
+      // Variables de cada tipo
+      let numero = 25;
+      let texto = "Hola soy Laura";
+      let booleano = true;
+      let indefinido = undefined;
+      let nulo = null;
+      let grande = 123n;
+      let simbolo = Symbol("id");
+      let lista = [1, 2, 3];
+      let objeto = { nombre: "Laura" };
+      let fecha = new Date();
+
+      // Tabla
+      salida2 += "<table border='1'>";
+      salida2 += "<tr><th>Variable</th><th>typeof</th><th>instanceof</th></tr>";
+      salida2 += "<tr><td>number</td><td>" + typeof numero + "</td><td>-</td></tr>";
+      salida2 += "<tr><td>string</td><td>" + typeof texto + "</td><td>-</td></tr>";
+      salida2 += "<tr><td>boolean</td><td>" + typeof booleano + "</td><td>-</td></tr>";
+      salida2 += "<tr><td>undefined</td><td>" + typeof indefinido + "</td><td>-</td></tr>";
+      salida2 += "<tr><td>null</td><td>" + typeof nulo + "</td><td>-</td></tr>";
+      salida2 += "<tr><td>bigint</td><td>" + typeof grande + "</td><td>-</td></tr>";
+      salida2 += "<tr><td>symbol</td><td>" + typeof simbolo + "</td><td>-</td></tr>";
+      salida2 += "<tr><td>Array</td><td>" + typeof lista + "</td><td>" + (lista instanceof Array) + "</td></tr>";
+      salida2 += "<tr><td>Object</td><td>" + typeof objeto + "</td><td>" + (objeto instanceof Object) + "</td></tr>";
+      salida2 += "<tr><td>Date</td><td>" + typeof fecha + "</td><td>" + (fecha instanceof Date) + "</td></tr>";
+      salida2 += "</table>";
+
+      // Explicaciones
+      salida2 += "<p>¿Por qué typeof null devuelve \"object\"? Es un error de JavaScript. En realidad null es un primitivo que significa \"sin valor\".</p>";
+      salida2 += "<p>¿Cómo saber si algo es un array? typeof no sirve porque también devuelve \"object\". Hay que usar Array.isArray(lista) o lista instanceof Array.</p>";
+
+      document.getElementById("resultado2").innerHTML = salida2;
+    </script>
+  </section>
+  <section>
+    <h2>Ejercicio 3. Operador ternario (10 puntos)</h2>
+    <p>Solicita un entero del 1 al 4. Muestra 1: Primavera, 2: Verano, 3: Otoño, 4: Invierno. Usa únicamente ternarios
+      encadenados para seleccionar la estación. Informa de cualquier valor no válido.</p>
+    <div id="resultado3" class="resultado"></div>
+    <script>
+      let salida3 = "";
+
+      const textoEj3 = prompt("Ejercicio 3 - Introduce un número entero del 1 al 4:");
+      const numeroEj3 = Number(textoEj3);
+
+      if (textoEj3 === null || !Number.isInteger(numeroEj3)) {
+        salida3 = "<p>Error: el valor introducido no es un número entero.</p>";
+      } else if (numeroEj3 < 1 || numeroEj3 > 4) {
+        salida3 = "<p>Error: el número debe estar entre 1 y 4.</p>";
+      } else {
+        const estacionEj3 = numeroEj3 === 1 ? "Primavera"
+          : numeroEj3 === 2 ? "Verano"
+            : numeroEj3 === 3 ? "Otoño"
+              : "Invierno";
+        salida3 = `<p>El número ${numeroEj3} corresponde a: ${estacionEj3}</p>`;
+      }
+
+      document.getElementById("resultado3").innerHTML = salida3;
+    </script>
+  </section>
+  <section>
+    <h2>Ejercicio 4. Operadores binarios (15 puntos)</h2>
+    <p>Solicita dos enteros entre 0 y 255 y una operación: AND (&amp;), OR (|), XOR (^), IZQ (&lt;&lt;) o DER
+      (&gt;&gt;). Para desplazamientos, el segundo número debe estar entre 0 y 7. Usa if / else if y muestra operandos y
+      resultado en decimal y binario.</p>
+    <div id="resultado4" class="resultado"></div>
+    <script>
+      let salida4 = "";
+
+      const textoAEj4 = prompt("Ejercicio 4 - Primer entero (0-255):");
+      const textoBEj4 = prompt("Ejercicio 4 - Segundo entero (0-255; si es desplazamiento, 0-7):");
+      const textoOpEj4 = prompt("Ejercicio 4 - Operación: AND, OR, XOR, IZQ o DER");
+
+      const numeroAEj4 = Number(textoAEj4);
+      const numeroBEj4 = Number(textoBEj4);
+      const operacionEj4 = textoOpEj4 === null ? "" : textoOpEj4.toUpperCase(); // Por si se pone en minúscula
+
+      if (textoAEj4 === null || textoBEj4 === null || !Number.isInteger(numeroAEj4) || !Number.isInteger(numeroBEj4)) {
+        salida4 = "<p>Error: ambos operandos deben ser números enteros.</p>";
+      } else if (numeroAEj4 < 0 || numeroAEj4 > 255 || numeroBEj4 < 0 || numeroBEj4 > 255) {
+        salida4 = "<p>Erro, los operandos deben estar entre 0 y 255.</p>";
+      } else if (operacionEj4 !== "AND" && operacionEj4 !== "OR" && operacionEj4 !== "XOR" && operacionEj4 !== "IZQ" && operacionEj4 !== "DER") {
+        salida4 = "<p>Error, debe ser AND, OR, XOR, IZQ o DER</p>";
+      } else if ((operacionEj4 === "IZQ" || operacionEj4 === "DER") && numeroBEj4 > 7) {
+        salida4 = "<p>Error: en los desplazamientos el segundo número debe estar entre 0 y 7.</p>";
+      } else {
+        let resultadoEj4;
+
+        if (operacionEj4 === "AND") {
+          resultadoEj4 = numeroAEj4 & numeroBEj4;
+        } else if (operacionEj4 === "OR") {
+          resultadoEj4 = numeroAEj4 | numeroBEj4;
+        } else if (operacionEj4 === "XOR") {
+          resultadoEj4 = numeroAEj4 ^ numeroBEj4;
+        } else if (operacionEj4 === "IZQ") {
+          resultadoEj4 = numeroAEj4 << numeroBEj4;
+        } else if (operacionEj4 === "DER") {
+          resultadoEj4 = numeroAEj4 >> numeroBEj4;
+        }
+
+        salida4 += `<p>Operación: ${operacionEj4}</p>`;
+        salida4 += "<table border='1'>";
+        salida4 += "<tr><th></th><th>Decimal</th><th>Binario</th></tr>";
+        salida4 += `<tr><td>Operando 1</td><td>${numeroAEj4}</td><td>${numeroAEj4.toString(2)}</td></tr>`;
+        salida4 += `<tr><td>Operando 2</td><td>${numeroBEj4}</td><td>${numeroBEj4.toString(2)}</td></tr>`;
+        salida4 += `<tr><td><strong>Resultado</strong></td><td><strong>${resultadoEj4}</strong></td><td><strong>${resultadoEj4.toString(2)}</strong></td></tr>`;
+        salida4 += "</table>";
+      }
+
+      document.getElementById("resultado4").innerHTML = salida4;
+    </script>
+  </section>
+  <section>
+    <h2>Ejercicio 5. Switch y break (13 puntos)</h2>
+    <p>Solicita una opción entera del 1 al 10. Para 1, 2 y 3 muestra mensajes acumulativos: «Nivel básico alcanzado»,
+      «Nivel intermedio alcanzado» y «Nivel avanzado alcanzado» (para 3 salen los tres). Para 4, 5 o 6: «Nivel
+      profesional». Para 8: «Nivel experto». Para 9: «Nivel maestro». En otros casos: «Opción no válida». Utiliza switch
+      y break en los lugares adecuados.</p>
+    <div id="resultado5" class="resultado"></div>
+    <script>
+      let salida5 = "";
+
+      const textoEj5 = prompt("Ejercicio 5 - Introduce una opción entera del 1 al 10:");
+      // Si no es un entero válido, opcionEj5 será NaN e irá dek tirón al default (con operador ternario)
+      const opcionEj5 = (textoEj5 !== null && Number.isInteger(Number(textoEj5))) ? Number(textoEj5) : NaN;
+
+      switch (opcionEj5) {
+        case 3:
+          salida5 = "<p>Nivel avanzado alcanzado</p>" + salida5;
+        // sin break: cae al case 2
+        case 2:
+          salida5 = "<p>Nivel intermedio alcanzado</p>" + salida5;
+        // sin break: cae al case 1
+        case 1:
+          salida5 = "<p>Nivel básico alcanzado</p>" + salida5;
+          break;
+        case 4:
+        case 5:
+        case 6:
+          salida5 = "<p>Nivel profesional</p>";
+          break;
+        case 8:
+          salida5 = "<p>Nivel experto</p>";
+          break;
+        case 9:
+          salida5 = "<p>Nivel maestro</p>";
+          break;
+        default:
+          salida5 = "<p>Opción no válida</p>";
+      }
+
+      document.getElementById("resultado5").innerHTML = salida5;
+    </script>
+  </section>
+  <section>
+    <h2>Ejercicio 6. Tabla de multiplicaciones N × N (15 puntos)</h2>
+    <p>Solicita un entero N entre 1 y 10. Genera una tabla HTML de N filas y N columnas con el producto de fila ×
+      columna. Usa dos bucles anidados y asigna a cada columna un color del array dado.</p>
+    <p><strong>Colores:</strong> array proporcionado en el script.</p>
+    <div id="resultado6" class="resultado"></div>
+    <script>
+      let salida6 = "";
+
+      const coloresEj6 = ["#FFE0E0", "#FFE8CC", "#FFF5CC", "#E2F0CB", "#D4F1F4", "#DDE7FF", "#E8D9FF", "#F8D9F0", "#D9F2E6", "#EAEAEA"];
+
+      const textoEj6 = prompt("Ejercicio 6 - Introduce un entero N entre 1 y 10:");
+      const nEj6 = Number(textoEj6);
+
+      if (textoEj6 === null || !Number.isInteger(nEj6)) {
+        salida6 = "<p>Error N debe ser un entero.</p>";
+      } else if (nEj6 < 1 || nEj6 > 10) {
+        salida6 = "<p>Error N debe estar entre 1 y 10.</p>";
+      } else {
+        salida6 += "<table>";
+        for (let filaEj6 = 1; filaEj6 <= nEj6; filaEj6++) {
+          salida6 += "<tr>";
+          for (let columnaEj6 = 1; columnaEj6 <= nEj6; columnaEj6++) {
+            salida6 += `<td style="background-color:${coloresEj6[columnaEj6 - 1]}">${filaEj6 * columnaEj6}</td>`;
+          }
+          salida6 += "</tr>";
+        }
+        salida6 += "</table>";
+      }
+
+      document.getElementById("resultado6").innerHTML = salida6;
+    </script>
+  </section>
+  <section>
+    <h2>Ejercicio 7. Recorrido de un objeto (12 puntos)</h2>
+    <p>Recorre el objeto producto mediante el bucle más adecuado. Muestra una tabla con cada propiedad y su valor. Los
+      números se mostrarán con progress (calidad: máximo 10; precio: máximo 1000; para velocidad y catálogo elige un
+      máximo razonable). Para colores, crea una tabla anidada cuyas celdas tengan esos colores de fondo. Para
+      disponible, muestra Sí o No.</p>
+    <p><strong>Objeto:</strong> proporcionado en el script.</p>
+    <div id="resultado7" class="resultado"></div>
+    <script>
+      let salida7 = "";
+
+      const productoEj7 = {
+        nombre: "Portátil",
+        marca: "Lenovo",
+        modelo: "ThinkPad",
+        precio: 850,
+        disponible: true,
+        colores: ["#000", "#0F0", "#0FF"],
+        calidad: 3,
+        velocidad: 2800,
+        categoria: "Informática",
+        catalogo: 2026
+      };
+      // Máximos de cada uno
+      const maximosEj7 = { precio: 1000, calidad: 10, velocidad: 5000, catalogo: 2100 };
+
+      salida7 += "<table border='1'>";
+      salida7 += "<tr><th>Propiedad</th><th>Valor</th></tr>";
+
+      for (const propiedadEj7 in productoEj7) { // El mejor es for in porque es un objeto y hay aue recorrer todas sus propieades 
+        const valorEj7 = productoEj7[propiedadEj7];
+        let celdaEj7;
+
+        if (typeof valorEj7 === "number") {
+          const maximoEj7 = maximosEj7[propiedadEj7];
+          celdaEj7 = `<progress max="${maximoEj7}" value="${valorEj7}">${valorEj7}/${maximoEj7}</progress> ${valorEj7} / ${maximoEj7}`;
+        } else if (Array.isArray(valorEj7)) {
+          celdaEj7 = "<table border='1'><tr>";
+        } else {
+          celdaEj7 = valorEj7;
+        }
+
+        salida7 += `<tr><td>${propiedadEj7}</td><td>${celdaEj7}</td></tr>`;
+      }
+
+      salida7 += "</table>";
+
+      document.getElementById("resultado7").innerHTML = salida7;
+    </script>
+  </section>
+
+
+  <section>
+    <h2>Ejercicio 8. Galería de animales (13 puntos)</h2>
+    <p>Recorre el array animales y genera una galería HTML. Cada imagen estará en img/nombreAnimal.jpg, tendrá tamaño
+      120 × 120 píxeles y un atributo alt adecuado. Debajo aparecerá el nombre del animal.</p>
+    <p><strong>Array:</strong> proporcionado en el script.</p>
+    <div id="resultado8" class="resultado"></div>
+    <script>
+      let salida8 = "";
+
+      const animalesEj8 = ["guepardo", "jaguar", "leon", "lince", "puma", "tigre"];
+
+      // 1. Recorre el array con un bucle for...of
+      for (const animalEj8 of animalesEj8) {
+
+        salida8 += `<img src="imgs/${animalEj8}.jpg"
+                         alt="imagen de ${animalEj8}"
+                         width="120"
+                         height="120">`;
+
+        salida8 += `<p>${animalEj8}</p>`;
+      }
+      document.getElementById("resultado8").innerHTML = salida8;
+    </script>
+  </section>
+
+
+
+
+  <section>
+    <h2>Ejercicio 9. ecuacion
+    </h2>
+
+    Debes usar un bucle para implementar el algoritmo de la raiz cuadrada de las calculadoras basado en divisiones con
+    precisión 0.001 <br>
+    Donde:<br> <img src="imgs/ecuacion.jpg"> <br>
+    <br>• N es el número al que queremos calcular la raíz cuadrada.
+    <br>• xn es la aproximación actual.
+    <br>• xn+1 es la aproximación mejorada.
+    <br>En cada iteración, hacemos la media entre nuestra estimación actual y el resultado de dividir el número original
+    entre esa estimación.
+    <br>En cada iteracion el error cometido es (xn+1 - xn) /2 asi tenemos que ejecutar el bucle hasta que ese valor sea
+    menor que 0.001
+    <br>
+    <div id="resultado9" class="resultado"></div>
+    <script>
+
+      let salida9 = "";
+
+      document.getElementById("resultado9").innerHTML = salida9;
+    </script>
+  </section>
+</body>
+
+</html>
